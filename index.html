@@ -4,30 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Classen Demo Site</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; }
-        .container { max-width: 700px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        h1 { color: #333; }
-        h2 { color: #555; margin-top: 32px; }
-        ul { padding-left: 20px; }
-        .links a { color: #007acc; text-decoration: none; display: block; margin-bottom: 8px; }
-        .intro { margin-bottom: 24px; }
-    </style>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <div class="container">
-        <h1>Welcome!</h1>
+        <div class="header-flex">
+            <img src="20250729rr.jpg" alt="Profile photo" class="profile-photo" />
+            <div>
+                <h1>John Classen</h1>
+                <h3>.NET Developer</h3>
+            </div>
+        </div>
         <div class="intro">
             <p>This is my demo site. Here you'll find links to a few of my demos hosted on GitHub Pages.</p>
         </div>
         <h2>My Demos</h2>
         <div class="links">
-            <a href="/AddMember-ngdemo" target="_blank">Add Member</a>
-            <a href="/magic-store" target="_blank">Magic Store</a>
-            <a href="/brewery" target="_blank">Wisconsin Breweries Demo</a>
+            <div class="demo-link">
+                <a href="./AddMember-ngdemo" target="_blank">Add Member <span class="big-emoji">👥</span></a>
+                <div style="font-size:0.98em; color:#333; margin-left:8px;">A simple SPA Angular demo for adding members to a list.</div>
+            </div>
+            <div class="demo-link">
+                <a href="./magic-store" target="_blank">Magic Store <span class="big-emoji">🧙‍♂️</span></a>
+                <div style="font-size:0.98em; color:#333; margin-left:8px;">A JavaScript inventory app for a real life magic shop! (CRUD operations)</div>
+            </div>
+            <div class="demo-link">
+                <a href="./brewery" target="_blank">Wisconsin Breweries Demo <span class="big-emoji">🍺</span></a>
+                <div style="font-size:0.98em; color:#333; margin-left:8px;">An Angular, map-based demo showcasing breweries in Wisconsin.</div>
+            </div>
         </div>
         <h2>Contact</h2>
-        <p>Connect with me on <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a> or visit my <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>.</p>
+        <p>Connect with me on <a href="https://www.linkedin.com/in/johnaclassen" target="_blank" rel="noopener">LinkedIn</a> or visit my <a href="https://github.com/jclas" target="_blank" rel="noopener">GitHub</a>.</p>
     </div>
+        <footer class="footer">
+            &copy; 2025 John Classen
+        </footer>
 </body>
 </html>
