@@ -1,6 +1,6 @@
 /* Demo description style moved from inline */
 .demo-desc {
-    font-size: 0.9em;
+    font-size: 0.98em;
     color: #333;
     margin-left: 8px;
 }
@@ -92,7 +92,7 @@ h3 {
 .links {
     margin-top: 10px;
 }
-.links a,
+/* .links a, */
 .demo-link a,
 button {
     color: #fff;
