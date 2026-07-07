@@ -49,29 +49,23 @@
             <h2 class="section-heading"><span class="heading-accent" aria-hidden="true"></span> My Demos</h2>
             
             <div class="demo-grid">
-<article class="demo-card">
-    <a href="/AddMember-ngdemo" target="_blank" class="demo-link">
-        <span class="demo-icon">👥</span>
-        <strong>Member Management</strong>
-    </a>
+<a href="/AddMember-ngdemo" target="_blank" class="demo-card">
+    <span class="demo-icon">👥</span>
+    <strong class="demo-link">Member Management</strong>
     <p class="demo-desc">A simple "Single Page App" (SPA) Angular demo for adding, editing, and deleting members.</p>
-</article>
+</a>
 
-<article class="demo-card">
-    <a href="/magic-store" target="_blank" class="demo-link">
-        <span class="demo-icon">🧙‍♂️</span>
-        <strong>Magic Store</strong>
-    </a>
+<a href="/magic-store" target="_blank" class="demo-card">
+    <span class="demo-icon">🧙‍♂️</span>
+    <strong class="demo-link">Magic Store</strong>
     <p class="demo-desc">A JavaScript inventory app for a real life magic shop! (CRUD operations)</p>
-</article>
+</a>
 
-<article class="demo-card">
-    <a href="/brewery" target="_blank" class="demo-link">
-        <span class="demo-icon">🍺</span>
-        <strong>Wisconsin Breweries Demo</strong>
-    </a>
+<a href="/brewery" target="_blank" class="demo-card">
+    <span class="demo-icon">🍺</span>
+    <strong class="demo-link">Wisconsin Breweries Demo</strong>
     <p class="demo-desc">An Angular, map-based demo showcasing breweries in Wisconsin.</p>
-</article>
+</a>
         </div>
         </section>
 
@@ -102,88 +96,6 @@
         <button id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
     </div>
 
-    <script>
-        // ----- Theme toggle -----
-        const themeToggle = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
-        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-
-        function applyTheme(theme) {
-            htmlElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            const isLight = theme === 'light';
-            themeToggle.querySelector('.sun-icon').style.display = isLight ? 'none' : 'inline';
-            themeToggle.querySelector('.moon-icon').style.display = isLight ? 'inline' : 'none';
-            metaThemeColor.setAttribute('content', isLight ? '#f0f0f8' : '#08080f');
-        }
-
-        applyTheme(currentTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const next = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-        });
-
-        // ----- Back to top -----
-        const backToTop = document.getElementById('back-to-top');
-
-        window.addEventListener('scroll', () => {
-            backToTop.classList.toggle('visible', window.scrollY > 300);
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // ----- Section reveal on scroll -----
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        // ----- Matrix rain -----
-        const matrixCanvas = document.getElementById('matrix-canvas');
-        const matrixCtx = matrixCanvas.getContext('2d');
-
-        function resizeMatrix() {
-            matrixCanvas.width = window.innerWidth;
-            matrixCanvas.height = window.innerHeight;
-        }
-        resizeMatrix();
-        window.addEventListener('resize', resizeMatrix);
-
-        const matrixCols = Math.floor(matrixCanvas.width / 16);
-        const matrixDrops = Array(matrixCols).fill(1);
-        const matrixChars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF<>/{}[]|&^%$#@!'.split('');
-
-        function drawMatrix() {
-            const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
-            matrixCtx.fillStyle = isLightTheme ? 'rgba(240, 240, 248, 0.08)' : 'rgba(8, 8, 15, 0.05)';
-            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-
-            matrixCtx.fillStyle = '#a855f7';
-            matrixCtx.font = '14px monospace';
-
-            for (let i = 0; i < matrixDrops.length; i++) {
-                const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-                matrixCtx.fillText(char, i * 16, matrixDrops[i] * 16);
-
-                if (matrixDrops[i] * 16 > matrixCanvas.height && Math.random() > 0.975) {
-                    matrixDrops[i] = 0;
-                }
-                matrixDrops[i]++;
-            }
-        }
-
-        setInterval(drawMatrix, 50);
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>

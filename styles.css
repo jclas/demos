@@ -355,12 +355,16 @@ html[data-theme="light"] #matrix-canvas {
 
 .demo-card {
     position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
     background-clip: padding-box;
     isolation: isolate;
+    cursor: pointer;
 }
 
 /* Gradient border overlay */
@@ -389,24 +393,8 @@ html[data-theme="light"] #matrix-canvas {
     opacity: 1;
 }
 
-.demo-card a {
-    display: block;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.demo-card a:hover {
-    color: var(--accent-start);
-}
-
 .demo-link {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
     color: var(--text-primary);
-    text-decoration: none;
     font-size: 1.2rem;
     font-weight: 600;
 }
