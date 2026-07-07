@@ -105,8 +105,7 @@
         const htmlElement = document.documentElement;
         const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 
-        const currentTheme = localStorage.getItem('theme') ||
-            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
 
         function applyTheme(theme) {
             htmlElement.setAttribute('data-theme', theme);
