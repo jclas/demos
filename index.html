@@ -1,41 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f0f1a">
     <title>John Classen Demo Site</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header-flex">
-            <div>
-                <h1>John Classen</h1>
-                <h3>.NET Developer</h3>
-            </div>
-        </div>
-        <div class="intro">
-            <p>This is my demo site. Here you'll find links to a few of my demos hosted on GitHub Pages.</p>
-        </div>
-        <div class="my-demos">
-            <h2>My Demos</h2>
-            <div class="demo-link">
-                <a href="/AddMember-ngdemo" target="_blank">Member Management <span class="big-emoji">👥</span></a>
-                <div class="demo-desc">A simple "Single Page App" (SPA) Angular demo for adding, editing, and deleting members.</div>
-            </div>
-            <div class="demo-link">
-                <a href="/magic-store" target="_blank">Magic Store <span class="big-emoji">🧙‍♂️</span></a>
-                <div class="demo-desc">A JavaScript inventory app for a real life magic shop! (CRUD operations)</div>
-            </div>
-            <div class="demo-link">
-                <a href="/brewery" target="_blank">Wisconsin Breweries Demo <span class="big-emoji">🍺</span></a>
-                <div class="demo-desc">An Angular, map-based demo showcasing breweries in Wisconsin.</div>
-            </div>
-        </div>
+    <!-- Decorative background blobs -->
+    <div class="bg-blob bg-blob--1" aria-hidden="true"></div>
+    <div class="bg-blob bg-blob--2" aria-hidden="true"></div>
+    <div class="bg-blob bg-blob--3" aria-hidden="true"></div>
 
-        <div class="about-me">
-            <h2>About Me</h2>
+    <div class="container">
+        <header class="site-header">
+            <button id="theme-toggle" aria-label="Toggle dark mode" title="Switch theme">
+                <span class="icon sun-icon">☀️</span>
+                <span class="icon moon-icon">🌙</span>
+            </button>
+            <div class="header-content">
+                <div>
+                    <h1>John Classen</h1>
+                    <h3>.NET Developer</h3>
+                </div>
+            </div>
+        </header>
+
+        <section class="intro-section">
+            <p>This is my demo site. Here you'll find links to a few of my demos hosted on GitHub Pages.</p>
+            
+            <div class="tech-stack" role="list">
+                <span class="tech-tag" role="listitem">.NET</span>
+                <span class="tech-tag" role="listitem">C#</span>
+                <span class="tech-tag" role="listitem">JavaScript</span>
+                <span class="tech-tag" role="listitem">SQL</span>
+                <span class="tech-tag" role="listitem">AI</span>
+                <span class="tech-tag" role="listitem">Angular</span>
+                <span class="tech-tag" role="listitem">Android</span>
+            </div>
+        </section>
+
+        <section class="my-demos reveal">
+            <h2 class="section-heading"><span class="heading-accent" aria-hidden="true"></span> My Demos</h2>
+            
+            <div class="demo-grid">
+<article class="demo-card">
+    <a href="/AddMember-ngdemo" target="_blank" class="demo-link">
+        <span class="demo-icon">👥</span>
+        <strong>Member Management</strong>
+    </a>
+    <p class="demo-desc">A simple "Single Page App" (SPA) Angular demo for adding, editing, and deleting members.</p>
+</article>
+
+<article class="demo-card">
+    <a href="/magic-store" target="_blank" class="demo-link">
+        <span class="demo-icon">🧙‍♂️</span>
+        <strong>Magic Store</strong>
+    </a>
+    <p class="demo-desc">A JavaScript inventory app for a real life magic shop! (CRUD operations)</p>
+</article>
+
+<article class="demo-card">
+    <a href="/brewery" target="_blank" class="demo-link">
+        <span class="demo-icon">🍺</span>
+        <strong>Wisconsin Breweries Demo</strong>
+    </a>
+    <p class="demo-desc">An Angular, map-based demo showcasing breweries in Wisconsin.</p>
+</article>
+        </div>
+        </section>
+
+        <section class="about-me reveal">
+            <h2 class="section-heading"><span class="heading-accent" aria-hidden="true"></span> About Me</h2>
             <p>I'm John Classen, a full-stack .NET developer from Wisconsin.
                 I've created programming solutions for businesses large and small,
                 from building back-ends to responsive front-ends.
@@ -47,13 +85,67 @@
                 and more programming, such as developing Android apps.
                 I am a life-long learner who can't stop watching instructional videos!
             </p>
+        </section>
+
+        <footer class="contact-section reveal">
+            <h2 class="section-heading"><span class="heading-accent" aria-hidden="true"></span> Contact</h2>
+            <p>Connect with me on <a href="https://www.linkedin.com/in/johnaclassen" target="_blank" rel="noopener">LinkedIn</a> or visit my <a href="https://github.com/jclas" target="_blank" rel="noopener">GitHub</a>.</p>
+        </footer>
+
+        <div class="site-footer">
+            &copy; 2026 John Classen
         </div>
 
-        <h2>Contact</h2>
-        <p>Connect with me on <a href="https://www.linkedin.com/in/johnaclassen" target="_blank" rel="noopener">LinkedIn</a> or visit my <a href="https://github.com/jclas" target="_blank" rel="noopener">GitHub</a>.</p>
+        <button id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
     </div>
-        <footer class="footer">
-            &copy; 2026 John Classen
-        </footer>
+
+    <script>
+        // ----- Theme toggle -----
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+
+        const currentTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        function applyTheme(theme) {
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            const isLight = theme === 'light';
+            themeToggle.querySelector('.sun-icon').style.display = isLight ? 'none' : 'inline';
+            themeToggle.querySelector('.moon-icon').style.display = isLight ? 'inline' : 'none';
+            metaThemeColor.setAttribute('content', isLight ? '#f0f0f8' : '#08080f');
+        }
+
+        applyTheme(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const next = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+        });
+
+        // ----- Back to top -----
+        const backToTop = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 300);
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ----- Section reveal on scroll -----
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
 </body>
 </html>
