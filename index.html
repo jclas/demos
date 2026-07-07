@@ -14,6 +14,9 @@
     <div class="bg-blob bg-blob--2" aria-hidden="true"></div>
     <div class="bg-blob bg-blob--3" aria-hidden="true"></div>
 
+    <!-- Matrix rain canvas -->
+    <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+
     <div class="container">
         <header class="site-header">
             <button id="theme-toggle" aria-label="Toggle dark mode" title="Switch theme">
@@ -145,6 +148,42 @@
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ----- Matrix rain -----
+        const matrixCanvas = document.getElementById('matrix-canvas');
+        const matrixCtx = matrixCanvas.getContext('2d');
+
+        function resizeMatrix() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        }
+        resizeMatrix();
+        window.addEventListener('resize', resizeMatrix);
+
+        const matrixCols = Math.floor(matrixCanvas.width / 16);
+        const matrixDrops = Array(matrixCols).fill(1);
+        const matrixChars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF<>/{}[]|&^%$#@!'.split('');
+
+        function drawMatrix() {
+            const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
+            matrixCtx.fillStyle = isLightTheme ? 'rgba(240, 240, 248, 0.08)' : 'rgba(8, 8, 15, 0.05)';
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+            matrixCtx.fillStyle = '#a855f7';
+            matrixCtx.font = '14px monospace';
+
+            for (let i = 0; i < matrixDrops.length; i++) {
+                const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                matrixCtx.fillText(char, i * 16, matrixDrops[i] * 16);
+
+                if (matrixDrops[i] * 16 > matrixCanvas.height && Math.random() > 0.975) {
+                    matrixDrops[i] = 0;
+                }
+                matrixDrops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
     </script>
 </body>
 </html>
