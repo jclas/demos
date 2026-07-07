@@ -13,7 +13,7 @@
     --accent-end: #a855f7;
     --accent-warm: #f59e0b;
     --accent-warm-muted: rgba(245, 158, 11, 0.12);
-    --border-color: rgba(226, 5, 255, 0.25);
+    --border-color: rgba(226, 5, 255, 0.20);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
     --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.5);
     --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
